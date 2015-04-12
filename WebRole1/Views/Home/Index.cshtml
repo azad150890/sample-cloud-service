@@ -1,0 +1,92 @@
+﻿@using System.Configuration
+@model dynamic
+
+@{
+    Layout = null;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Sum.com</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,800" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Oleo+Script:400" rel="stylesheet" type="text/css" />
+    <script src="/css/5grid/jquery.js"></script>
+    <script src="/css/5grid/init.js?use=mobile,desktop,1000px&amp;mobileUI=1&amp;mobileUI.theme=none&amp;mobileUI_titleBarOverlaid=1&amp;mobileUI_titleBarHeight=60&amp;viewport_is1000px=1060&amp;mobileUI_openerWidth=80"></script>
+    <noscript>
+        <link rel="stylesheet" href="/css/5grid/core.css" />
+        <link rel="stylesheet" href="/css/5grid/core-desktop.css" />
+        <link rel="stylesheet" href="/css/5grid/core-1200px.css" />
+        <link rel="stylesheet" href="/css/5grid/core-noscript.css" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="/css/style-desktop.css" />
+    </noscript>
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+    <!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
+</head>
+<body class="homepage">
+    <div id="header-wrapper">
+        <div class="5grid-layout">
+            <div class="row">
+                <div class="12u">
+                    <header id="header">
+                        <div id="logo">
+                            <h1><a href="#" class="mobileUI-site-name">Sum.com</a></h1>
+                            <span>The best place to add two numbers together</span>
+                        </div>
+                        <nav id="nav" class="mobileUI-site-nav">
+                            <ul>
+                                <li class="current_page_item"><a href="index.html">Welcome</a></li>
+                            </ul>
+                        </nav>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="banner-wrapper">
+        <div class="5grid-layout">
+            <div class="row">
+                <div class="12u">
+                    <div id="banner" class="box">
+                        <div class="5grid">
+                            <div class="row">
+                                <div class="7u">
+                                    <h2>Hi. Welcome to Sum.com</h2>
+                                    <p>
+                                        <input type="text" id="firstNumber"  style="height: 50px; font-size: 42px; width: 100px;" />
+                                        + 
+                                        <input type="text" id="secondNumber" style="height: 50px; font-size: 42px; width: 100px;" />
+                                        <span style="font-size: 42px;" id="result"></span>
+                                    </p>
+                                </div>
+                                <div class="5u">
+                                    <ul>
+                                        <li><a href="#" id="submitButton" class="button button-big button-icon button-icon-rarrow">Add them together</a></li>
+                                        <li><a href="#" class="button button-alt button-big button-icon button-icon-question" onclick="document.getElementById('result').innerHTML='';">Reset</a></li>
+                                    </ul>
+                                </div>
+                                <p>Build: @ConfigurationManager.AppSettings["ConfigVariable"]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        $("#submitButton").on("click", function() {
+            $.ajax({
+                type: "POST",
+                url: "/home/addition",
+                data: { firstNumber: $("#firstNumber").val(), secondNumber: $("#secondNumber").val() }
+            }).done(function (msg) {
+                $("#result").html("= " + msg);
+            });
+        });
+    </script>
+</body>
+</html>
