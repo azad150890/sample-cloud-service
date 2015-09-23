@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ServiceConfiguration serviceName="OnCheckinTestCloudService.Website" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-10.2.2">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="OnCheckinTestCloudService.Website" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2015-04.2.6">
   <Role name="OnCheckinExample.Website">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=oncheckin;AccountKey=wPPv6I7BmLovlmAQj0oWkkL2Aa5GhqO/kGk2PA7EjcLSks71ap1Fe4fZ5bOUk+Jp/9r+4J5kdfc5xq6yAgE6Wg==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=;AccountKey=" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
